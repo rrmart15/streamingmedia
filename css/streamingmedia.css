@@ -1,3 +1,4 @@
+/*-------------------------CSS RESET CODE--------------------------------*/
 /* http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
 License: none (public domain)
@@ -25,6 +26,7 @@ nav, section {
 
 body {
     line-height:1;
+    width:100%;
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
@@ -37,118 +39,66 @@ table {
     border-spacing:0;
 }
 /*--------------------------------------------------------------------------*/
-html {
-    background-color: #020659;
-    
+* {
+    margin:0;
+    padding:0;
+}
+
+html { 
+    background-color: #020659;  
 }
 
 body {
-    width:375px;
-    margin:0 auto; 
-    background-color:#FFFFFF;
+    min-width:375px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color:#FFFFFF;
 }
 
 header {
-    width:100%;
+    width:0 auto;   
     background:linear-gradient(to right,#2104D9,#000000);
     color:#FFFFFF;
 } 
 
-nav {
-    border-bottom:1px solid black;
+.reorder {
+    display:flex;
+    flex-direction:column;
+}
+
+.nav-top {
+    order: 0;
+    position:relative sticky;
+}
+
+.bottom {
+    order:1;
+    position:relative;
+}
+
+section nav {
+    margin:0;
+    padding:0;
+}
+h1 {
+    font-size:1.25em;
+    text-transform:uppercase;
+    padding-bottom:10px;
+    font-weight:bold;
+}
+
+h2 {
+    padding-left:30px;
+    padding-bottom:5px;
 }
 
 nav h2 {
     visibility:hidden;
 }
 
-ul {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height .2s ease-out;
-}
-
-li {
-    display:inline-block;
-}
-
-#dropdown {
-    cursor: pointer;
-    display: inline-block;
-    padding: 28px 20px;
-    position: relative;
-    user-select: none;
-    background-color:#030ABC;
-    border-bottom:1px solid red;
-}
-
-#dropdown span {
-    background-color: #ffffff;
-    display: block;
-    height: 2px;
-    position: relative;
-    transition: background-color .2s ease-out;
-    width: 18px;
-}
-
-#dropdown span:before, #dropdown span:after {
-    background: #ffffff;
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    transition: all .2s ease-out;
-    width: 100%;
-}
-
-#dropdown span:before {
-    top: 5px;
-}
-
-#dropdown span:after {
-    top: -5px;
-}
-
-input {
-    display: none;
-}
-
-input:checked ~ ul {
-    max-height: 500px;
-}
-
-input:checked ~ #dropdown span {
-    background: transparent;
-}
-
-input:checked ~ #dropdown span:before {
-    transform: rotate(-45deg);
-}
-
-input:checked ~ #dropdown span:after {
-    transform: rotate(45deg);
-}
-
-input:checked ~ #dropdown:not(.steps) span:before, input:checked ~ #dropdown:not(.steps) span:after {
-    top: 0;
-}
-
-h1 {
-    font-size:1.25em;
-    text-transform:uppercase;
-    font-weight:bold;
-}
-
-h2 {
-    text-transform:uppercase;
-    color:#590242;
-    margin:5px;
-    margin-left:30px;
-}
-
 h2, h3 {
     font-size:1em;
+    text-transform:uppercase;
+    color:#590242;    
     font-weight:bold;
 }
 
@@ -156,10 +106,119 @@ p, dl, dd {
     font-size:1em;
 }
 
-.menu {
-    text-transform:uppercase;
+section nav ul {
+    overflow:hidden;
+    max-height:0;
+    transition:max-height .2s ease-out;
+    list-style:none; 
+    text-align:center; 
+    margin:0;
+    padding:0;
+    background:#2104D9;    
 }
 
+ul li {
+    font-variant:small-caps;
+    font-size:2em;   
+}
+
+ul div li {
+    text-transform:uppercase;
+    
+}
+
+ul li:hover {
+    background-color:#590242;
+    display:block;
+}
+
+ul a {
+    text-decoration:none;
+    text-align:center;
+    color:#FFFFFF;    
+    display:block;
+    padding:20px 20px;
+}
+
+/*-------------START OF DROPDOWN MENU STYLES-------------*/
+label li {
+    font-variant:small-caps;
+}
+
+label li:hover {
+    background-color:#590242;
+    display:block;
+}
+
+label a {
+    text-align:center;   
+    text-decoration:none;
+    display:block;
+    padding:20px 20px;
+    color:#FFFFFF;
+}
+
+label {
+    cursor:pointer;
+    display:inline-block;
+    padding:28px 20px;
+    position:relative;
+    user-select:none;  
+}
+
+label span {
+    background-color:#FFFFFF;
+    display:block;
+    height:2px;
+    position:relative;
+    transition:background-color .2s ease-out;
+    width:18px;
+}
+
+label span:before, label span:after {
+    background: #FFFFFF;
+    content:'';
+    display:block;
+    height:100%;
+    position:absolute;
+    transition:all .2s ease-out;
+    width:100%;
+}
+
+label span:before {
+    top:5px;
+}
+
+label span:after {
+    top:-5px;
+}
+
+input {
+    display:none;
+}
+
+input:checked ~ ul {
+    max-height:500px;
+}
+
+input:checked ~ label span {
+    background:transparent;
+}
+
+input:checked ~ label span:before {
+    transform:rotate(-45deg);
+}
+
+input:checked ~ label span:after {
+    transform:rotate(45deg);
+}
+
+input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+    top:0;
+}
+/*-------------END OF DROPDOWN MENU STYLES-------------*/
+
+/*-------START OF TRENDING SONGS SECTION (WITH SCROLL BAR)-------*/
 #trending {
     color:#590242;
     padding-top:15px;
@@ -203,11 +262,12 @@ p, dl, dd {
     width:350px;
 }
 
-dl {
+.scroll section dl {
     display:flex;
+    font-style:italic;
 }
 
-dt {
+.scroll section dt {
     padding-right:5px;
     font-size:1em;
 }
@@ -231,13 +291,16 @@ audio {
     bottom:150px;
     left:5px;
 }
-/*-----------------------------------------------------*/
+/*--------END OF TRENDING SONGS SECTION WITH SCROLL BAR---------*/
+
+/*-----------START OF 'MORE TRENDING' BUTTON STYLES-------------*/
 .more {
     color:#FFFFFF;
     background-color:#590242;
     border-radius:5px;
-    padding:10px;
-    width:150px;
+    padding:5px;
+    width:135px;
+    margin:5px;
     display:block;
     text-align:center;
     margin:10px 0 30px 32px;
@@ -247,7 +310,9 @@ audio {
 .more:hover {
     background-color:#020659;
 }
-/*-----------------------------------------------------*/
+/*------------END OF 'MORE TRENDING BUTTON STYLES-------------*/
+
+/*---------START OF PLAYLISTS SECTION WITH SCROLL BAR---------*/
 #playlists ::-webkit-scrollbar, #curated ::-webkit-scrollbar {
     width:15px;
 }
@@ -265,13 +330,35 @@ audio {
     background:#FFFFFF;
 }
 
+.playlist-container {
+    dt {
+        padding-bottom:10px;
+        text-transform:uppercase;
+        font-weight:bold;
+        
+        span {
+            display:block;
+        }
+    } 
+        
+    img {
+        padding:5px;
+        
+    }
+}
+
 .scroll-playlists {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
-    overflow-y:auto;    
+    overflow-y:auto;   
     background-color:#2699FB;
-    padding:10px;
+    padding:0;
+}
+
+.playlist-container h2 {
+    margin-left:20px;
+    margin-bottom:10px;
 }
 
 .scroll-playlists section {
@@ -280,54 +367,152 @@ audio {
     position:relative;   
     background-color:#0D8DFB;
     color:#FFFFFF;
+    text-align:center;
+}
 
 .scroll-playlists div {
     position:absolute;
     padding:0px;
+    color:#FFFFFF;
     height:10px;
-    width:350px;    
+    width:350px;
+    margin:auto;     
 }
-}
+/*---------END OF PLAYLISTS SECTION WITH SCROLL BAR---------*/
 
+/*-----------START OF 'ALL YOUR PLAYLISTS' BUTTON STYLES-------------*/
 .all {
     color:#FFFFFF;
     background-color:#590242;
     border-radius:5px;
-    padding:10px;
-    width:150px;
+    padding:5px;
+    width:135px;
     display:block;
     text-align:center;
     margin:10px 0 30px 32px;
     text-decoration:none;
 }
 
-.curated-playlists {
+.all:hover {
+    background-color:#020659;
+}
+/*-----------START OF 'ALL YOUR PLAYLISTS' SECTION STYLES-------------*/
+.scroll-curated {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
     overflow-y:auto;    
-    background-color:#030ABC;
+    background-color:#2104D9;
     padding:10px;
 }
 
-.curated-playlists section {
+.scroll-curated section {
     margin:5px;
     padding:10px;
     position:relative;   
-    background-color:#020873;
+    background-color:#030ABC;
+    color:#FFFFFF;
+    text-align:center;
 }
 
-.curated-playlists div {
+.scroll-curated div {
     position:absolute;
     padding:0px;
     color:#FFFFFF;
     height:10px;
     width:350px;
+    margin:auto;
 }
+/*-----------END OF 'ALL YOUR PLAYLISTS' BUTTON STYLES-------------*/
 
+/*-----------START OF FOOTER SECTION STYLES-------------*/
 footer p {
     font-size:.75em;
     color:#590242;
     text-align:center;
     padding-bottom:20px;
+}
+/*-----------END OF FOOTER SECTION STYLES-------------*/
+
+/*-----------START OF STYLING FOR LARGER SCREENS-------------*/
+@media screen and (min-width:834px) {
+    header {
+        padding:20px;
+    }
+
+    .nav-top {
+        width:100%;   
+    }
+
+    nav {
+        padding-bottom:20px;
+        background-color:#2104D9; 
+    }
+
+    ul {
+        overflow:visible;
+        position:absolute;
+        top:0;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;   
+        list-style-type:none; 
+        text-align:center;
+        justify-content:space-even;
+    }
+
+    li {
+        padding: 0.5rem 1rem;
+        text-transform:uppercase; 
+        display:inline-block;
+    }
+    
+    a {
+        font-size:1.5rem;
+        font-weight:500px;
+        display:block;
+        padding:0.5rem 1rem;
+    }
+
+    label span, input {
+        display:none;
+    } 
+
+#trending {
+    width:auto;
+    padding-top:30px;
+}
+
+.more {
+    float:right;
+    border:none;
+}
+
+.playlist-container {
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    height:500px;
+
+    .all {
+    float:right;
+    border:none;
+    }    
+    
+    img {
+    float:left;    
+    }
+    
+    #curated, #playlists {
+    width:50%;
+    height:500px;
+    }
+
+    .scroll-playlists, .scroll-curated {
+        height:100%;
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    }
+}
 }
