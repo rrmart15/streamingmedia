@@ -26,11 +26,6 @@ nav, section {
 
 body {
     line-height:1;
-    width:100%;
-    max-width:834px;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
@@ -56,39 +51,35 @@ body {
     min-width:375px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin:0 auto;
-    background-color:#FFFFFF;
+    background-color:#FFFFFF;    
 }
 
-.reorder {
+#reorder {
     display:flex;
     flex-direction:column;
 }
 
-.navbar {
+nav {
     order:0;
-    position:relative fixed;
-    top:0;
-    width:100%;
-    background-color: #030ABC;
 }
 
-.smooth {
+header {
     order:1;
     position:relative;
-
-    header {
     padding:20px;  
     background:linear-gradient(to right,#2104D9,#000000);
-    color:#FFFFFF;  
-    }
-    
-}
+    color:#FFFFFF;
+}    
 
-h1 {        /*smooth jazz header*/
+#smooth h1 {        
     font-size:1.25em;
     text-transform:uppercase;
     padding-bottom:10px;
     font-weight:bold;
+}
+
+nav h2 {    
+    visibility:hidden;
 }
 
 h2 {
@@ -96,11 +87,7 @@ h2 {
     padding-bottom:5px;
 }
 
-nav h2 {    
-    visibility:hidden;
-}
-
-h2, h3 {
+h2 {
     font-size:1em;
     text-transform:uppercase;
     color:#590242;    
@@ -111,77 +98,73 @@ p, dl, dd {
     font-size:1em;
 }
 
-section nav ul {
+/*.dropdown {
     overflow:hidden;
     max-height:0;
-    transition:max-height .2s ease-out;
-    list-style:none; 
-    text-align:center; 
+    transition:max-height .2s ease-out;    
+}*/
+
+nav {
+    background-color:#2104D9;
+    list-style-type:none;
+    position:fixed;    
+    width:100%;
+    z-index:3;
+}
+
+nav ul {
     margin:0;
     padding:0;
-    background:#2104D9; 
-      
+    list-style:none;
+    overflow:hidden;
+    background-color:#2104D9;
 }
 
-#title {
-    font-variant:small-caps;
-    font-size:1.25em;
-    font-weight:bold;
-}
-
-#sub-items {
-    text-transform: uppercase;
-}
-
-ul li:hover {
-    background-color:#590242;
-    display:block;
-}
-
-ul a {
+nav li a {           
     text-decoration:none;
     text-align:center;
     color:#FFFFFF;    
     display:block;
     padding:20px 20px;
-}
+    }
 
-/*-------------START OF DROPDOWN MENU STYLES-------------*/
-label li {
-    font-variant:small-caps;
-}
-
-label li:hover {
+nav li a:hover,nav .dropdown:hover {
     background-color:#590242;
+    }
+    
+nav .logo {
     display:block;
-}
-
-label a {
-    text-align:center;   
+    font-size:1.25em;
     text-decoration:none;
-    display:block;
-    padding:20px 20px;
-    color:#FFFFFF;
+    font-weight:bold;
+    padding:10px 20px;
 }
 
-label {
+nav .menu {
+    text-transform:uppercase;
+    clear:both;
+    max-height:0;
+    transition:max-height .2s ease-out;
+    }
+
+nav .menu-icon {
     cursor:pointer;
     display:inline-block;
     padding:28px 20px;
     position:relative;
-    user-select:none;  
+    user-select:none;
+}
+        
+nav .menu-icon .navicon {
+        background-color:#FFFFFF;
+        display:block;
+        height:2px;
+        position:relative;
+        transition:background-color .2s ease-out;
+        width:18px;
 }
 
-label span {
-    background-color:#FFFFFF;
-    display:block;
-    height:2px;
-    position:relative;
-    transition:background-color .2s ease-out;
-    width:18px;
-}
-
-label span:before, label span:after {
+nav .menu-icon .navicon:before, nav .menu-icon .navicon:after {
     background: #FFFFFF;
     content:'';
     display:block;
@@ -191,96 +174,99 @@ label span:before, label span:after {
     width:100%;
 }
 
-label span:before {
+nav .menu-icon .navicon:before {
     top:5px;
 }
 
-label span:after {
+nav .menu-icon .navicon:after {
     top:-5px;
 }
 
-input {
+nav .dropdown {
     display:none;
 }
 
-input:checked ~ ul {
+nav .dropdown:checked ~ .menu {
     max-height:500px;
 }
 
-input:checked ~ label span {
+nav .dropdown:checked ~ .menu-icon .navicon {
     background:transparent;
 }
 
-input:checked ~ label span:before {
+nav .dropdown:checked ~ .menu-icon .navicon:before {
     transform:rotate(-45deg);
 }
 
-input:checked ~ label span:after {
+nav .dropdown:checked ~ .menu-icon .navicon:after {
     transform:rotate(45deg);
 }
 
-input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+nav .dropdown:checked ~ .menu-icon:not(.steps) .navicon:before, nav .dropdown:checked ~ .menu-icon:not(.steps) .navicon:after {
     top:0;
 }
 /*-------------END OF DROPDOWN MENU STYLES-------------*/
 
 /*-------START OF TRENDING SONGS SECTION (WITH SCROLL BAR)-------*/
-.trending-container {
-    width:100%;
-    background-color:#FFFFFF;
-}
-
-#trending {
+#trending-container {
     color:#590242;
     padding-top:15px;
 }
 
-#trending ::-webkit-scrollbar {
+#trending-container ::-webkit-scrollbar {
    width:15px; 
 }
 
-#trending ::-webkit-scrollbar-track {
+#trending-container ::-webkit-scrollbar-track {
     box-shadow:inset 0 0 15px #590242;
 }
 
-#trending ::-webkit-scrollbar-thumb {
+#trending-container ::-webkit-scrollbar-thumb {
     background:#590242;
     border-radius:5px;    
 }
 
-#trending ::-webkit-scrollbar-thumb:hover {
+#trending-container ::-webkit-scrollbar-thumb:hover {
     background:#020659;
 }
 
-.scroll {
+#scroll {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
     overflow-y:hidden;
+    gap:20px;
 }
 
-.scroll section {
-    margin:10px;
+#scroll section {
+    width:100%;
     position:relative;
-    width:350px;
+    margin:10px;  
+    color:#590242; 
 }
 
-.scroll div {
+#scroll div {
     position:absolute;
     top:251px;
     background-color:rgba(255,255,255,.75);
     padding:5px;
     height:50px;
-    width:350px;
+    width:350px;  
+}
+#scroll h3 { 
+    font-weight:bold;
+    font-size:1em;
+    text-transform:uppercase;
+    padding:5px;
 }
 
-
-.scroll section dl {
+#scroll section dl {
     display:flex;
     font-style:italic;
+    margin:5px;
 }
 
-.scroll section dt {
+#scroll section dt {
     padding-right:5px;
     font-size:1em;
 }
@@ -326,43 +312,24 @@ audio {
 /*------------END OF 'MORE TRENDING BUTTON STYLES-------------*/
 
 /*---------START OF PLAYLISTS SECTION WITH SCROLL BAR---------*/
-#playlists ::-webkit-scrollbar, #curated ::-webkit-scrollbar {
+#playlists ::-webkit-scrollbar {
     width:15px;
 }
 
-#playlists ::-webkit-scrollbar-track, #curated ::-webkit-scrollbar-track  {
+#playlists ::-webkit-scrollbar-track {
     box-shadow:inset 0 0 15px #020659;
 }
 
-#playlists ::-webkit-scrollbar-thumb, #curated ::-webkit-scrollbar-thumb {
+#playlists ::-webkit-scrollbar-thumb {
     background:#020659;
     border-radius:5px;
 }
 
-#playlists ::-webkit-scrollbar-thumb:hover, #curated ::-webkit-scrollbar-thumb:hover {
+#playlists ::-webkit-scrollbar-thumb:hover {
     background:#FFFFFF;
 }
 
-.playlist-container {
-    background-color:#FFFFFF;
-
-    dt {
-        padding-bottom:10px;
-        text-transform:uppercase;
-        font-weight:bold;
-        
-        span {
-            display:block;
-        }
-    } 
-        
-    img {
-        padding:5px;
-        
-    }
-}
-
-.scroll-playlists {
+#scroll-playlists {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
@@ -371,12 +338,7 @@ audio {
     padding:0;
 }
 
-.playlist-container h2 {
-    margin-left:20px;
-    margin-bottom:10px;
-}
-
-.scroll-playlists section {
+#scroll-playlists section {
     margin:5px;
     padding:10px;
     position:relative;   
@@ -385,18 +347,28 @@ audio {
     text-align:center;
 }
 
-.scroll-playlists div {
-    position:absolute;
-    padding:0px;
-    color:#FFFFFF;
-    height:10px;
-    width:350px;
-    margin:auto;     
+#scroll-playlists section h3 {
+    padding-bottom:10px;
+    text-transform:uppercase;
+    font-weight:bold;
 }
+        
+#scroll-playlists section h3 span {
+    display:block;
+}
+           
+#scroll-playlists section img {
+    padding:5px;
+}
+
+#scroll-playlists section:hover {
+    background-color:#590242;
+}
+
 /*---------END OF PLAYLISTS SECTION WITH SCROLL BAR---------*/
 
 /*-----------START OF 'ALL YOUR PLAYLISTS' BUTTON STYLES-------------*/
-.all {
+#all-btn {
     color:#FFFFFF;
     background-color:#590242;
     border-radius:5px;
@@ -408,11 +380,11 @@ audio {
     text-decoration:none;
 }
 
-.all:hover {
+#all-btn:hover {
     background-color:#020659;
 }
 /*-----------START OF 'ALL YOUR PLAYLISTS' SECTION STYLES-------------*/
-.scroll-curated {
+#scroll-curated {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
@@ -421,7 +393,7 @@ audio {
     padding:10px;
 }
 
-.scroll-curated section {
+#scroll-curated section {
     margin:5px;
     padding:10px;
     position:relative;   
@@ -430,7 +402,7 @@ audio {
     text-align:center;
 }
 
-.scroll-curated div {
+#scroll-curated div {
     position:absolute;
     padding:0px;
     color:#FFFFFF;
@@ -452,82 +424,64 @@ footer p {
 
 /*-----------START OF STYLING FOR LARGER SCREENS-------------*/
 @media screen and (min-width:834px) {
-    nav {
-        justify-content:center;
-        background-color:#2104D9; 
-        padding:0;
-        margin:0;
-        width:100%
+nav {
+    overflow:visible;
+    position:absolute;
+    top:0;
+    display:grid;
+    flex-direction:row; 
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+}
+            
+.menu-icon .navicon, nav .dropdown {
+    display:none;
+} 
+
+
+
+    #trending-container {
+        width:auto;
+        padding-top:30px;
     }
 
-    ul {
-        overflow:visible;
-        position:absolute;
-        top:0;
+    .more {
+        float:right;
+        border:none;
+        margin-right:8px;
+    }
+
+    #playlist-container {
         display:flex;
-        flex-direction:row; 
-        align-items:center;
-        gap:50px;
-        padding:0;
-        margin:0;
+        flex-direction:row;
+        width:100%;
+        height:500px;
+        background-color:#FFFFFF;
     }
 
-    li {    
-        text-transform:uppercase; 
-        display:inline-block; 
-        justify-content:space-evenly; 
-        padding:0;
-        margin:0;
-    }
-    
-    a {
-        display:block;
-        padding:0.5rem 1rem;
+    #all-playlists {
+        float:right;
+        border:none;
+    }    
+        
+    #playlist-container img {
+        float:left;    
     }
 
-    label span, input {
+    #playlist-container h3 span {
         display:none;
     } 
 
-#trending {
-    width:auto;
-    padding-top:30px;
-}
-
-.more {
-    float:right;
-    border:none;
-    margin-right:8px;
-}
-
-.playlist-container {
-    display:flex;
-    flex-direction:row;
-    width:100%;
-    height:500px;
-    background-color:#FFFFFF;
-
-    .all {
-    float:right;
-    border:none;
-    }    
-    
-    img {
-    float:left;    
-    }
-    
-    #curated, #playlists {
-    width:50%;
-    height:100%;
-    background-color:#FFFFFF;
+    #playlists {
+        width:50%;
+        height:100%;
+        background-color:#FFFFFF;
     }
 
-    .scroll-playlists, .scroll-curated {
+    #scroll-playlists, #scroll-curated {
         height:100%;
         width:100%;
         display:flex;
         flex-direction:column;
         gap:10px;
     }
-}
 }
