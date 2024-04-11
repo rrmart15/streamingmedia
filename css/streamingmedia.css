@@ -27,6 +27,10 @@ nav, section {
 body {
     line-height:1;
     width:100%;
+    max-width:834px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
@@ -51,35 +55,36 @@ html {
 body {
     min-width:375px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin:0 auto;
     background-color:#FFFFFF;
 }
-
-header {
-    width:0 auto;   
-    background:linear-gradient(to right,#2104D9,#000000);
-    color:#FFFFFF;
-} 
 
 .reorder {
     display:flex;
     flex-direction:column;
 }
 
-.nav-top {
-    order: 0;
-    position:relative sticky;
+.navbar {
+    order:0;
+    position:relative fixed;
+    top:0;
+    width:100%;
+    background-color: #030ABC;
 }
 
-.bottom {
+.smooth {
     order:1;
     position:relative;
+
+    header {
+    padding:20px;  
+    background:linear-gradient(to right,#2104D9,#000000);
+    color:#FFFFFF;  
+    }
+    
 }
 
-section nav {
-    margin:0;
-    padding:0;
-}
-h1 {
+h1 {        /*smooth jazz header*/
     font-size:1.25em;
     text-transform:uppercase;
     padding-bottom:10px;
@@ -91,7 +96,7 @@ h2 {
     padding-bottom:5px;
 }
 
-nav h2 {
+nav h2 {    
     visibility:hidden;
 }
 
@@ -114,17 +119,18 @@ section nav ul {
     text-align:center; 
     margin:0;
     padding:0;
-    background:#2104D9;    
+    background:#2104D9; 
+      
 }
 
-ul li {
+#title {
     font-variant:small-caps;
-    font-size:2em;   
+    font-size:1.25em;
+    font-weight:bold;
 }
 
-ul div li {
-    text-transform:uppercase;
-    
+#sub-items {
+    text-transform: uppercase;
 }
 
 ul li:hover {
@@ -219,6 +225,11 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
 /*-------------END OF DROPDOWN MENU STYLES-------------*/
 
 /*-------START OF TRENDING SONGS SECTION (WITH SCROLL BAR)-------*/
+.trending-container {
+    width:100%;
+    background-color:#FFFFFF;
+}
+
 #trending {
     color:#590242;
     padding-top:15px;
@@ -251,6 +262,7 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
 .scroll section {
     margin:10px;
     position:relative;
+    width:350px;
 }
 
 .scroll div {
@@ -261,6 +273,7 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
     height:50px;
     width:350px;
 }
+
 
 .scroll section dl {
     display:flex;
@@ -331,6 +344,8 @@ audio {
 }
 
 .playlist-container {
+    background-color:#FFFFFF;
+
     dt {
         padding-bottom:10px;
         text-transform:uppercase;
@@ -428,6 +443,7 @@ audio {
 /*-----------START OF FOOTER SECTION STYLES-------------*/
 footer p {
     font-size:.75em;
+    background-color:#FFFFFF;
     color:#590242;
     text-align:center;
     padding-bottom:20px;
@@ -436,39 +452,35 @@ footer p {
 
 /*-----------START OF STYLING FOR LARGER SCREENS-------------*/
 @media screen and (min-width:834px) {
-    header {
-        padding:20px;
-    }
-
-    .nav-top {
-        width:100%;   
-    }
-
     nav {
-        padding-bottom:20px;
+        justify-content:center;
         background-color:#2104D9; 
+        padding:0;
+        margin:0;
+        width:100%
     }
 
     ul {
         overflow:visible;
         position:absolute;
         top:0;
-        display:grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;   
-        list-style-type:none; 
-        text-align:center;
-        justify-content:space-even;
+        display:flex;
+        flex-direction:row; 
+        align-items:center;
+        gap:50px;
+        padding:0;
+        margin:0;
     }
 
-    li {
-        padding: 0.5rem 1rem;
+    li {    
         text-transform:uppercase; 
-        display:inline-block;
+        display:inline-block; 
+        justify-content:space-evenly; 
+        padding:0;
+        margin:0;
     }
     
     a {
-        font-size:1.5rem;
-        font-weight:500px;
         display:block;
         padding:0.5rem 1rem;
     }
@@ -485,6 +497,7 @@ footer p {
 .more {
     float:right;
     border:none;
+    margin-right:8px;
 }
 
 .playlist-container {
@@ -492,6 +505,7 @@ footer p {
     flex-direction:row;
     width:100%;
     height:500px;
+    background-color:#FFFFFF;
 
     .all {
     float:right;
@@ -504,7 +518,8 @@ footer p {
     
     #curated, #playlists {
     width:50%;
-    height:500px;
+    height:100%;
+    background-color:#FFFFFF;
     }
 
     .scroll-playlists, .scroll-curated {
