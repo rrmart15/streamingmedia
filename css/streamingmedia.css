@@ -110,7 +110,6 @@ nav ul {
     list-style:none;
     overflow:hidden;
     max-height:0;
-    transition:max-height .2s ease out;
     background-color:#2104D9;
 }
 
