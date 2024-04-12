@@ -38,11 +38,6 @@ table {
     border-spacing:0;
 }
 /*--------------------------------------------------------------------------*/
-* {
-    margin:0;
-    padding:0;
-}
-
 html { 
     background-color: #020659;  
 }
@@ -55,7 +50,7 @@ body {
 }
 
 #reorder {
-    display:grid;
+    display:flex;
 }
 
 nav {
@@ -75,6 +70,7 @@ header {
     background:linear-gradient(to right,#2104D9,#000000);
     color:#FFFFFF;
     margin-top:70px;
+    width:100%;
 }    
 
 header h1 {        
@@ -137,10 +133,6 @@ nav .logo {
         height:0;
         color:#FFFFFF;
         font-variant:small-caps;
-}
-
-nav .logo:hover {
-    background-color:#590242;
 }
     
 nav .menu {
@@ -245,7 +237,6 @@ nav .dropdown:checked ~ .menu-icon:not(.steps) .navicon:before, nav .dropdown:ch
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
     overflow-y:hidden;
-    gap:20px;
 }
 
 #scroll section {
