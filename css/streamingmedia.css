@@ -55,12 +55,17 @@ body {
 }
 
 #reorder {
-    display:flex;
-    flex-direction:column;
+    display:grid;
 }
 
 nav {
-    order:0;
+    order:-1;
+    position:relative;
+    background-color:#2104D9;
+    list-style-type:none;
+    position:fixed;    
+    width:100%;
+    z-index:3;
 }
 
 header {
@@ -69,9 +74,10 @@ header {
     padding:20px;  
     background:linear-gradient(to right,#2104D9,#000000);
     color:#FFFFFF;
+    margin-top:70px;
 }    
 
-#smooth h1 {        
+header h1 {        
     font-size:1.25em;
     text-transform:uppercase;
     padding-bottom:10px;
@@ -98,25 +104,13 @@ p, dl, dd {
     font-size:1em;
 }
 
-/*.dropdown {
-    overflow:hidden;
-    max-height:0;
-    transition:max-height .2s ease-out;    
-}*/
-
-nav {
-    background-color:#2104D9;
-    list-style-type:none;
-    position:fixed;    
-    width:100%;
-    z-index:3;
-}
-
 nav ul {
     margin:0;
     padding:0;
     list-style:none;
     overflow:hidden;
+    max-height:0;
+    transition:max-height .2s ease out;
     background-color:#2104D9;
 }
 
@@ -133,13 +127,22 @@ nav li a:hover,nav .dropdown:hover {
     }
     
 nav .logo {
-    display:block;
-    font-size:1.25em;
-    text-decoration:none;
-    font-weight:bold;
-    padding:10px 20px;
+        display:block;
+        font-size:1.5em;
+        text-decoration:none;
+        font-weight:bold;
+        padding:0;
+        margin:0;
+        text-align:center;
+        width:100%;
+        height:0;
+        color:#FFFFFF;
 }
 
+nav .logo:hover {
+    background-color:#590242;
+}
+    
 nav .menu {
     text-transform:uppercase;
     clear:both;
@@ -312,20 +315,20 @@ audio {
 /*------------END OF 'MORE TRENDING BUTTON STYLES-------------*/
 
 /*---------START OF PLAYLISTS SECTION WITH SCROLL BAR---------*/
-#playlists ::-webkit-scrollbar {
+#playlist-container ::-webkit-scrollbar {
     width:15px;
 }
 
-#playlists ::-webkit-scrollbar-track {
+#playlist-container ::-webkit-scrollbar-track {
     box-shadow:inset 0 0 15px #020659;
 }
 
-#playlists ::-webkit-scrollbar-thumb {
+#playlist-container ::-webkit-scrollbar-thumb {
     background:#020659;
     border-radius:5px;
 }
 
-#playlists ::-webkit-scrollbar-thumb:hover {
+#playlist-container ::-webkit-scrollbar-thumb:hover {
     background:#FFFFFF;
 }
 
@@ -388,9 +391,9 @@ audio {
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-x:auto;
-    overflow-y:auto;    
+    overflow-y:auto;   
     background-color:#2104D9;
-    padding:10px;
+    padding:0;
 }
 
 #scroll-curated section {
@@ -402,20 +405,28 @@ audio {
     text-align:center;
 }
 
-#scroll-curated div {
-    position:absolute;
-    padding:0px;
-    color:#FFFFFF;
-    height:10px;
-    width:350px;
-    margin:auto;
+#scroll-curated section h3 {
+    padding-bottom:10px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+        
+#scroll-curated section h3 span {
+    display:block;
+}
+           
+#scroll-curated section img {
+    padding:5px;
+}
+
+#scroll-curated section:hover {
+    background-color:#590242;
 }
 /*-----------END OF 'ALL YOUR PLAYLISTS' BUTTON STYLES-------------*/
 
 /*-----------START OF FOOTER SECTION STYLES-------------*/
 footer p {
     font-size:.75em;
-    background-color:#FFFFFF;
     color:#590242;
     text-align:center;
     padding-bottom:20px;
@@ -424,21 +435,30 @@ footer p {
 
 /*-----------START OF STYLING FOR LARGER SCREENS-------------*/
 @media screen and (min-width:834px) {
-nav {
-    overflow:visible;
-    position:absolute;
-    top:0;
-    display:grid;
-    flex-direction:row; 
-    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
-}
-            
-.menu-icon .navicon, nav .dropdown {
-    display:none;
-} 
+    nav li {
+        justify-content:center;
+    }
 
+    nav li a {
+        padding:20px 30px;
+    }
 
+    nav .menu {
+        clear:none;
+        max-height:none;
+        width:100%;
+        justify-content:space-evenly;        
+        overflow: visible;
+        position: absolute;
+        top: 0;
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    }
 
+    nav .menu-icon {
+        display:none;
+    }
+             
     #trending-container {
         width:auto;
         padding-top:30px;
@@ -451,14 +471,14 @@ nav {
     }
 
     #playlist-container {
-        display:flex;
+        display:inline-flex;
         flex-direction:row;
         width:100%;
         height:500px;
         background-color:#FFFFFF;
     }
 
-    #all-playlists {
+    #all-btn {
         float:right;
         border:none;
     }    
@@ -471,17 +491,28 @@ nav {
         display:none;
     } 
 
-    #playlists {
+    .playlists {
         width:50%;
         height:100%;
         background-color:#FFFFFF;
     }
 
-    #scroll-playlists, #scroll-curated {
+    #scroll-playlists {
         height:100%;
         width:100%;
-        display:flex;
+        display:inline-flex;
         flex-direction:column;
         gap:10px;
+    }
+
+    #scroll-curated {
+        height:100%;
+        width:100%;
+        display:inline-flex;
+        flex-direction:column;
+    }
+
+    footer {
+        margin-top:100px;
     }
 }
