@@ -56,11 +56,11 @@ body {
 nav {
     order:-1;
     position:relative;
-    background-color:#2104D9;
     list-style-type:none;
     position:fixed;    
     width:100%;
     z-index:3;
+    background-color:#030ABC;
 }
 
 header {
@@ -117,9 +117,13 @@ nav li a {
     padding:20px 20px;
     }
 
-nav li a:hover,nav .dropdown:hover {
+nav .sub-items:hover{
     background-color:#590242;
-    }
+}
+
+.logo:hover {
+    background-color:#590242;
+}
     
 nav .logo {
         display:block;
