@@ -358,9 +358,18 @@ audio {
 }
 
 #playlist-container h3 {
-    padding-bottom:10px;
     text-transform:uppercase;
     font-weight:bold;
+    padding-bottom:10px;
+}
+
+#playlist-container .wrap {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:125px;
+    align-self:center;
+    margin-left:15px;
 }
            
 #scroll-playlists section img {
@@ -408,19 +417,25 @@ audio {
     text-align:center;
 }
 
+#scroll-curated section img {
+    padding:5px;
+}
+
 #scroll-curated section h3 {
     padding-bottom:10px;
     text-transform:uppercase;
     font-weight:bold;
 }
-        
-#scroll-curated section h3 span {
-    display:block;
-}
            
-#scroll-curated section img {
-    padding:5px;
+#dinner {
+    position:relative;
 }
+
+#rephrase-dinner {
+    display:none;
+}
+
+
 
 #scroll-curated section:hover {
     background-color:#590242;
@@ -489,6 +504,10 @@ footer p {
         width:100%;
         height:500px;
         background-color:#FFFFFF;
+    }
+
+    #playlist-container .wrap {
+        width:200px;
     }
 
     #all-btn {
